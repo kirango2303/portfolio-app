@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import CompanyCard from '../CompanyCard/CompanyCard'
+const data = ["AAPL", "MSFT", "GOOGL", "GPC", "GPN", "GPS", "GRMN"]
 
-const filter = () => {
+const Filter = () => {
     return (
-        <div>
-            This is filter page
+        <div className="container">
+            <CompanyCard companyName="AAPL"/>
+            <CompanyCard companyName="MSFT"/>
+            {/* <CompanyCard companyName="GOOGL"/> */}
+            <CompanyCard companyName="FB"/>
+
         </div>
     )
 }
 
-export default filter
+export default Filter
