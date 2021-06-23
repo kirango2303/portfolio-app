@@ -5,7 +5,9 @@ import Signup from './components/auth/Signup/Signup';
 import Login from './components/auth/Login/Login';
 // import PrivateRoute from './components/auth/PrivateRoute';
 import { Route, Switch } from 'react-router-dom';
-import home from './components/home/home';
+import Analysis from './components/analysis/Analysis';
+import Filter from './components/filter/Filter';
+import Watchlist from './components/watchlist/Watchlist';
 
 const App = () => {
   return (
@@ -18,7 +20,9 @@ const App = () => {
           <Switch>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
-            <Route path="/home" component={home}/>
+            <Route path="/analysis" component={Analysis}/>
+            <Route path="/filter" component={Filter}/>
+            <Route path="/watchlist" component={Watchlist}/>
           </Switch>
         </AuthProvider>
       </div>

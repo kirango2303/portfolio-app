@@ -36,7 +36,7 @@ const Login = () => {
           })
 
 
-        history.push("/home")
+        history.push("/analysis")
       }
       catch {
         setError("Failed to login. Please check your password or username and try again")
@@ -60,16 +60,15 @@ const Login = () => {
       <div className="content">
         <div className="content__container">
           <p className="content__container__text">
-            Hello
-    </p>
-
+           Hello 
+      </p>
           <ul className="content__container__list">
             <li className="content__container__list__item"> learners !</li>
             <li className="content__container__list__item"> analysts !</li>
             <li className="content__container__list__item">investors !</li>
             <li className="content__container__list__item">everybody !</li>
           </ul>
-        </div>
+      </div>
 
 
       </div>

@@ -1,12 +1,7 @@
 
-  .wrap {
-    /* background-color: #f99192;  */
-    /* background-image: url("https://mppmduse2pmpovwapp.azurewebsites.net/wp-content/uploads/2019/09/netflix-background-9.jpg"); */
-    /* background-image: url("background.png");  */
-    /* position: fixed; */
-    background: url(background.png);
-  background-repeat: no-repeat;
-  background-size: auto;
+  body {
+    background-image: url("https://quatamiha.files.wordpress.com/2021/06/background-1.png?w=1536");
+    position: fixed;
     left: 0;
     right: 0;
     font-family: "Asap", sans-serif;

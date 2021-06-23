@@ -3,7 +3,7 @@ import React from 'react'
 const filter = () => {
     return (
         <div>
-            This is filter page (main function of web)
+            This is filter page
         </div>
     )
 }

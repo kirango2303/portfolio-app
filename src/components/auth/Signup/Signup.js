@@ -40,7 +40,7 @@ const Signup = () => {
       }
       await localStorage.setItem("user", JSON.stringify(loggedInUser))
       // console.log("log in successfully")
-      history.push("/home")
+      history.push("/analysis")
     }
     catch {
       setError("Failed to create an account. Password must be at least 6 characters or username already existed")
