@@ -22,6 +22,7 @@ function Recommend(){
             console.log(err);
         }
     }
+    console.log(similarStocks)
     return (
         <div className="body">
         
@@ -35,13 +36,9 @@ function Recommend(){
             </form>
            
 
-            <div>
+            <div className="company-container">
                 {similarStocks && similarStocks.map(stock => (
-                      <div className="container">
-                      <CompanyCard companyName={stock.symbol}/>
-
-          
-                  </div>
+                    <CompanyCard companyName={stock.symbol} width={1000}/>
                 ))}
             </div>    
         </div>
