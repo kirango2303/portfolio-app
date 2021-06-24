@@ -6,9 +6,9 @@ import Login from "./components/auth/Login/Login";
 // import PrivateRoute from './components/auth/PrivateRoute';
 import { Route, Switch } from "react-router-dom";
 import Analysis from "./components/analysis/Analysis";
-import Filter from "./components/filter/Filter";
 import Watchlist from "./components/watchlist/Watchlist";
 import Topbar from "./elements/topbar/Topbar";
+import Filter from "./components/filter/Filter"
 
 const App = () => {
   return (
