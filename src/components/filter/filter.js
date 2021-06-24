@@ -1,16 +1,18 @@
 import React, { useEffect, useRef } from 'react'
 import CompanyCard from '../CompanyCard/CompanyCard'
-const data = ["AAPL", "MSFT", "GOOGL", "GPC", "GPN", "GPS", "GRMN"]
-
+import "./Filter.css"
+import Topbar from '../../elements/topbar/Topbar'
 const Filter = () => {
     return (
+        <>
+        <Topbar />
         <div className="container">
-            <CompanyCard companyName="AAPL"/>
-            <CompanyCard companyName="MSFT"/>
-            {/* <CompanyCard companyName="GOOGL"/> */}
-            <CompanyCard companyName="FB"/>
-
+            <CompanyCard companyName="AAPL" width={1000}/>
+            <CompanyCard companyName="MSFT" width={1000}/>
+            <CompanyCard companyName="GOOGL" width={1000}/>
+            <CompanyCard companyName="AMD" width={1000}/>
         </div>
+        </>
     )
 }
 

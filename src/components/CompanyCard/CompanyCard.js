@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-
+import "./CompanyCard.css"
 const CompanyCard = (props) => {
-    const {companyName} = props
+    const {companyName, width} = props
     const divRef = useRef()
 
     useEffect(() => {
@@ -10,16 +10,17 @@ const CompanyCard = (props) => {
         script.async = true;
         script.innerHTML =  JSON.stringify({
             "symbol": `${companyName}`,
-            "width": 1000,
+            "width": `${width}`,
             "locale": "en",
-            "colorTheme": "light",
+            "colorTheme": "dark",
             "isTransparent": false
           })
+        script.className = "componentCard"
         divRef.current.appendChild(script);
     }, [])
 
     return (
-        <div className="tradingview-widget-container" ref={divRef}>
+        <div className="tradingview-widget-container componentCard" ref={divRef}>
             <div className="tradingview-widget-container__widget"></div>
         </div>
     )
