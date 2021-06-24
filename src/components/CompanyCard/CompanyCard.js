@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 
 const CompanyCard = (props) => {
-    const {companyName} = props
+    const {companyName, width} = props
     const divRef = useRef()
 
     useEffect(() => {
@@ -10,7 +10,7 @@ const CompanyCard = (props) => {
         script.async = true;
         script.innerHTML =  JSON.stringify({
             "symbol": `${companyName}`,
-            "width": 1000,
+            "width": `${width}`,
             "locale": "en",
             "colorTheme": "light",
             "isTransparent": false

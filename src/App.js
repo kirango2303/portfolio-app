@@ -6,8 +6,8 @@ import Login from './components/auth/Login/Login';
 // import PrivateRoute from './components/auth/PrivateRoute';
 import { Route, Switch } from 'react-router-dom';
 import Analysis from './components/analysis/Analysis';
-import Filter from './components/filter/Filter';
-import Watchlist from './components/watchlist/Watchlist';
+// import Filter from './components/filter/Filter';
+import Recommend from './components/recommend/Recommend';
 
 const App = () => {
   return (
@@ -21,8 +21,7 @@ const App = () => {
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
             <Route path="/analysis" component={Analysis}/>
-            <Route path="/filter" component={Filter}/>
-            <Route path="/watchlist" component={Watchlist}/>
+            <Route path="/get-similar" component={Recommend}/>
           </Switch>
         </AuthProvider>
       </div>
