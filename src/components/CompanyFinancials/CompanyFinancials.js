@@ -1,20 +1,22 @@
 import React, { useEffect, useRef } from 'react'
 
-const CompanyCard = (props) => {
+const CompanyFinancials = (props) => {
     const {companyName, width, height} = props
     const divRef = useRef()
 
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js'
+        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js" 
         script.async = true;
         script.innerHTML =  JSON.stringify({
             "symbol": `${companyName}`,
             "width": `${width}`,
+            "height": `${height}`,
             "locale": "en",
             "colorTheme": "light",
             "isTransparent": false,
-            "height": `${height}`
+            "largeChartUrl": "",
+            "displayMode": "regular",
           })
         divRef.current.appendChild(script);
     }, [])
@@ -26,4 +28,5 @@ const CompanyCard = (props) => {
     )
 }
 
-export default CompanyCard
+export default CompanyFinancials
+

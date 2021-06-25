@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 
-const CompanyCard = (props) => {
-    const {companyName, width, height} = props
+const SmallCompanyCard = (props) => {
+    const {companyName, width} = props
     const divRef = useRef()
 
     useEffect(() => {
@@ -13,8 +13,7 @@ const CompanyCard = (props) => {
             "width": `${width}`,
             "locale": "en",
             "colorTheme": "light",
-            "isTransparent": false,
-            "height": `${height}`
+            "isTransparent": false
           })
         divRef.current.appendChild(script);
     }, [])
@@ -26,4 +25,4 @@ const CompanyCard = (props) => {
     )
 }
 
-export default CompanyCard
+export default SmallCompanyCard
