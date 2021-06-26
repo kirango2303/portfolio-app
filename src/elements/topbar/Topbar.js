@@ -1,22 +1,51 @@
-import React from 'react'
-import "./Topbar.css"
-import {Link} from "react-router-dom";
+import React from 'react';
+import {
+  Nav,
+  NavLink,
+  Bars,
+  NavMenu,
+  NavBtn,
+  NavBtnLink
+} from './NavbarElements';
 
 const Topbar = () => {
-    return (
-        <div className="headerNavbar">
+  return (
+    <>
+      <Nav>
+        {/* <NavLink to='/'>
+          <img src={require('../../images/logo.svg')} alt='logo' />
+        </NavLink> */}
+        <Bars />
+        <NavMenu>
+          <div>
+            <NavLink to='/analysis' activeStyle>
+                Analysis
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to='/filter' activeStyle>
+                Filter
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to='/watchlist' activeStyle>
+                Watch List
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to='/signup' activeStyle>
+                Sign Up
+            </NavLink>
+          </div>
+          {/* Second Nav */}
+          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+        </NavMenu>
+        <NavBtn>
+          <NavBtnLink to='/login'>Sign In</NavBtnLink>
+        </NavBtn>   
+      </Nav>
+    </>
+  );
+};
 
-            <div className="navbar">
-                <h1 className="navbarLogo"><Link to="/dashboard">STOCKS APP</Link></h1>
-                <div className="navbarLinks">
-                <div> <Link className="link" to="/dashboard">Dashboard</Link></div>
-                <div><Link className="link" to="/dashboard">My watchlist</Link></div>
-                <div><Link className="link" to="/filter">Filter Tool</Link></div>
-                <div><Link className="link" to="/analysis">Analysis Tool</Link></div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-export default Topbar
+export default Topbar;
