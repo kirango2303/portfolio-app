@@ -90,17 +90,6 @@ const History = () => {
               justifyContent: "flex-start",
             }}
           >
-            Today's Change
-          </div>
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
             Purchase Price
           </div>
           <div
@@ -124,17 +113,6 @@ const History = () => {
             }}
           >
             Total Value
-          </div>
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Total Gain/Loss
           </div>
         </div>
         {tradeData &&
@@ -183,17 +161,6 @@ const History = () => {
                     justifyContent: "flex-start",
                   }}
                 >
-                  {data.todayChange}
-                </div>
-                <div
-                  style={{
-                    width: "10%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
                   {data.purchasePrice}
                 </div>
                 <div
@@ -217,17 +184,6 @@ const History = () => {
                   }}
                 >
                   {data.total_value}
-                </div>
-                <div
-                  style={{
-                    width: "10%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.total_gain_loss}
                 </div>
               </div>
             );

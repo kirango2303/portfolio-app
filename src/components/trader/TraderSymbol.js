@@ -205,7 +205,7 @@ const TraderSymbol = (props) => {
     await db.collection("trades").add({
       symbol: symbol,
       description: stockData.shortName,
-      currentPrice: data.iexRealtimePrice,
+      currentPrice: regularMarketPrice,
       createdAt: new Date(),
       todayChange: today_change,
       purchasePrice: regularMarketPrice,
