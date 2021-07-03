@@ -18,7 +18,7 @@ const CompanyCard = (props) => {
     });
     script.className = "componentCard";
     divRef.current.appendChild(script);
-  }, []);
+  }, [companyName, width]);
 
   return (
     <div className="tradingview-widget-container componentCard" ref={divRef}>
