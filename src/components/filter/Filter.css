@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow: scroll;
+}
+
+.test-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+}
+.button-modal-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 120px;
+  height: 50px;
+  position: absolute;
+  right: 5%;
+  top: 4%;
+}
+
+.button {
+  width: 120px;
+  height: 80%;
+  background-color: #0b4387;
+}
+.button:hover {
+  background-color: white;
+  color: #0b4387;
+  border: 1px solid #0b4387;
+}
+
+.outer-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-container {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+::-webkit-scrollbar {
+  display: none;
+}

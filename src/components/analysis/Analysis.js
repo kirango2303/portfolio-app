@@ -4,7 +4,7 @@ import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 import Topbar from '../../elements/topbar/Topbar';
  
 const Analysis = () => (
-  
+    
     <div className="wrap">
        <div className="top"><Topbar /></div>
         <div className="under"><TradingViewWidget

@@ -94,10 +94,11 @@ const Login = () => {
             Let me in.
           </Button>
         </Form>
-      </div>
         <div className="linktosignup">
           No account <Link to="/signup">Sign Up</Link>
         </div>
+      </div>
+
     </div>
   );
 }

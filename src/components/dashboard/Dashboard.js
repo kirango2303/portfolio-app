@@ -1,13 +1,12 @@
-import React from 'react'
-import TechAnalysis from './TechAnalysis/TechAnalysis'
-
+import React from "react";
+import Topbar from "../../elements/topbar/Topbar";
 const Dashboard = () => {
-    return (
-        <div>
-            <h1>This is dashboard page (home page)</h1>
-            <TechAnalysis />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Topbar />
+      This is dashboard page (home page)
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
