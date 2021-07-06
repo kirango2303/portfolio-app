@@ -43,7 +43,10 @@ const Trader = () => {
         }}
       >
         <Topbar />
-        <div className="container" style={{ height: query ? "50%" : "15%" }}>
+        <div
+          className="container-stock"
+          style={{ height: query ? "50%" : "15%" }}
+        >
           <h1>Search your stock</h1>
           <input
             type="text"
