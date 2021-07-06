@@ -80,7 +80,9 @@ const TraderSymbol = (props) => {
   const URL = `https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=${symbol}`;
 
   const handleShowMax = () => {
-    setQuantity(maxQuantity);
+    if (action) {
+      setQuantity(maxQuantity);
+    }
   };
 
   const handleChange = (event) => {
@@ -145,10 +147,18 @@ const TraderSymbol = (props) => {
   }, [docId]);
 
   useEffect(() => {
-    setMaxQuantity(
-      Math.floor(currentUserInfo.buying_power / regularMarketPrice)
-    );
-  }, [currentUserInfo, regularMarketPrice]);
+    if (action) {
+      if (action == "buy") {
+        setMaxQuantity(
+          Math.floor(currentUserInfo.buying_power / regularMarketPrice)
+        );
+      } else {
+        if (symbol in currentUserInfo.stocks) {
+          setMaxQuantity(currentUserInfo.stocks[symbol].quantity);
+        }
+      }
+    }
+  }, [currentUserInfo, regularMarketPrice, action]);
 
   const handleClear = () => {
     setQuantity(0);
