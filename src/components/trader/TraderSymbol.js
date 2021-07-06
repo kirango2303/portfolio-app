@@ -162,6 +162,8 @@ const TraderSymbol = (props) => {
         if (symbol in currentUserInfo.stocks) {
           setQuantity(currentUserInfo.stocks[symbol].quantity);
           setMaxQuantity(currentUserInfo.stocks[symbol].quantity);
+        } else {
+          setMaxQuantity(0);
         }
       }
     }
