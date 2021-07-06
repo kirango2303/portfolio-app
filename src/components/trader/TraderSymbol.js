@@ -166,12 +166,20 @@ const TraderSymbol = (props) => {
             regularMarketPrice * quantity,
           [`stocks.${symbol}.quantity`]:
             currentUserInfo.stocks[symbol].quantity * 1 + quantity * 1,
+          [`stocks.${symbol}.average_price`]:
+            Math.round(
+              ((currentUserInfo.stocks[symbol].cur_value +
+                regularMarketPrice * quantity) /
+                (currentUserInfo.stocks[symbol].quantity * 1 + quantity * 1)) *
+                100
+            ) / 100,
         });
     } else {
       const newStocks = { ...currentUserInfo.stocks };
       newStocks[symbol] = {
         cur_value: regularMarketPrice * quantity,
         quantity: quantity * 1,
+        average_price: regularMarketPrice,
       };
       await db.collection("users").doc(docId).update({
         stocks: newStocks,
@@ -194,8 +202,11 @@ const TraderSymbol = (props) => {
       .collection("users")
       .doc(docId)
       .update({
-        buying_power: currentUserInfo.cash + currentUserInfo.long_stock / 2,
-        total_value: currentUserInfo.cash + sum,
+        buying_power:
+          currentUserInfo.cash -
+          regularMarketPrice * quantity +
+          currentUserInfo.long_stock / 2,
+        total_value: currentUserInfo.cash - regularMarketPrice * quantity + sum,
       });
     let today_change =
       Math.round((data.iexRealtimePrice / stockData.regularMarketPrice) * 100) /
@@ -230,6 +241,13 @@ const TraderSymbol = (props) => {
           regularMarketPrice * quantity,
         [`stocks.${symbol}.quantity`]:
           currentUserInfo.stocks[symbol].quantity * 1 - quantity * 1,
+        [`stocks.${symbol}.average_price`]:
+          Math.round(
+            ((currentUserInfo.stocks[symbol].cur_value -
+              regularMarketPrice * quantity) /
+              (currentUserInfo.stocks[symbol].quantity * 1 - quantity * 1)) *
+              100
+          ) / 100,
       });
     if (currentUserInfo.stocks[symbol].quantity <= quantity) {
       const deletedStock = { ...currentUserInfo.stocks };
@@ -244,7 +262,9 @@ const TraderSymbol = (props) => {
       .doc(docId)
       .update({
         num_stocks: currentUserInfo.num_stocks * 1 - quantity * 1,
-        long_stock: currentUserInfo.long_stock - regularMarketPrice * quantity,
+        long_stock:
+          currentUserInfo.long_stock -
+          currentUserInfo.stocks[symbol].average_price * quantity,
         cash: currentUserInfo.cash + regularMarketPrice * quantity - 19.95,
       });
 
@@ -256,7 +276,10 @@ const TraderSymbol = (props) => {
       .collection("users")
       .doc(docId)
       .update({
-        buying_power: currentUserInfo.cash + currentUserInfo.long_stock / 2,
+        buying_power:
+          currentUserInfo.buying_power +
+          regularMarketPrice * quantity -
+          currentUserInfo.stocks[symbol].average_price * quantity,
         total_value: currentUserInfo.cash + sum,
       });
     setOpen(false);
