@@ -62,7 +62,7 @@ const TraderSymbol = (props) => {
   const { symbol } = useParams();
   const { location } = props;
   const data = location.state.data;
-  console.log(data);
+  // console.log(data);
   const { currentUser } = useAuth();
   const [invalidate, setInvalidate] = useState(true);
   const [docId, setDocId] = useState(""); //docId of user
@@ -117,7 +117,7 @@ const TraderSymbol = (props) => {
         "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
       },
     });
-    console.log(res.data.quoteResponse.result[0]);
+    // console.log(res.data.quoteResponse.result[0]);
     const stock = res.data.quoteResponse.result[0];
     setRegularMarketPrice(stock.regularMarketPrice.toFixed(2));
     setStockData(stock);
@@ -160,6 +160,7 @@ const TraderSymbol = (props) => {
         );
       } else {
         if (symbol in currentUserInfo.stocks) {
+          setQuantity(currentUserInfo.stocks[symbol].quantity);
           setMaxQuantity(currentUserInfo.stocks[symbol].quantity);
         }
       }
