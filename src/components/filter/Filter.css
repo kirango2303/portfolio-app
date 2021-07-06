@@ -58,3 +58,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.d-flex {
+  background-color: aliceblue;
+}
