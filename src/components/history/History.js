@@ -114,6 +114,17 @@ const History = () => {
           >
             Total Value
           </div>
+          <div
+            style={{
+              width: "15%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
+            Action
+          </div>
         </div>
         {tradeData &&
           tradeData.map((data) => {
@@ -184,6 +195,18 @@ const History = () => {
                   }}
                 >
                   {data.total_value}
+                </div>
+
+                <div
+                  style={{
+                    width: "15%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                  }}
+                >
+                  {data.action}
                 </div>
               </div>
             );
