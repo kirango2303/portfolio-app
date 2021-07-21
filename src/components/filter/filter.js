@@ -111,7 +111,6 @@ const Filter = () => {
     setOpen(false);
   };
 
-  console.log(empty);
   return (
     <div className="outer-container">
       <Topbar />

@@ -11,7 +11,6 @@ const Trader = () => {
   const [financeData, setFinanceData] = useState([]);
   const [topGainers, setTopGainers] = useState([]);
   const history = useHistory();
-  console.log(URL);
   useEffect(() => {
     db.collection("finance").onSnapshot((snapShot) => {
       setFinanceData(snapShot.docs.map((doc) => doc.data()));
@@ -218,7 +217,7 @@ const Trader = () => {
                         display: "flex",
                       }}
                     >
-                      <span>{data.close}</span>
+                      <span>{data.close || data.iexClose}</span>
                     </div>
                     <div
                       style={{
