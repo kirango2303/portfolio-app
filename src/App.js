@@ -14,23 +14,17 @@ import History from "./components/history/History";
 const App = () => {
   return (
     <>
-      <div className="d-flex" style={{ minHeight: "100vh", height: "auto" }}>
-        <div className="w-100">
-          <Switch>
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/analysis" component={Analysis} />
-            <PrivateRoute path="/filter" component={Filter} />
-            {/* <PrivateRoute path="/watchlist" component={Watchlist} /> */}
-            <PrivateRoute exact path="/trader" component={Trader} />
-            <PrivateRoute exact path="/history" component={History} />
-            <PrivateRoute
-              exact
-              path="/trader/:symbol"
-              component={TraderSymbol}
-            />
-          </Switch>
-        </div>
+      <div style={{ minHeight: "100vh" }}>
+        <Switch>
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/analysis" component={Analysis} />
+          <PrivateRoute path="/filter" component={Filter} />
+          {/* <PrivateRoute path="/watchlist" component={Watchlist} /> */}
+          <PrivateRoute exact path="/trader" component={Trader} />
+          <PrivateRoute exact path="/history" component={History} />
+          <PrivateRoute exact path="/trader/:symbol" component={TraderSymbol} />
+        </Switch>
       </div>
     </>
   );

@@ -6,6 +6,11 @@
   font-family: "Asap", sans-serif;
 } */
 
+.wrap {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
 .login {
   overflow: hidden;
   background-color: white;

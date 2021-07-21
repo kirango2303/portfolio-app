@@ -246,6 +246,7 @@ const TraderSymbol = (props) => {
         total_value_today -
         Math.round(quantity * regularMarketPrice * 100) / 100,
       docId: docId,
+      action: action,
     });
     setOpen(false);
     alert("Your trade was successful");
@@ -302,6 +303,26 @@ const TraderSymbol = (props) => {
           currentUserInfo.stocks[symbol].average_price * quantity,
         total_value: currentUserInfo.cash + sum,
       });
+    let today_change =
+      Math.round((data.iexRealtimePrice / stockData.regularMarketPrice) * 100) /
+      100;
+    let total_value_today =
+      (Math.round(quantity * regularMarketPrice * 100) / 100) * today_change;
+    await db.collection("trades").add({
+      symbol: symbol,
+      description: stockData.shortName,
+      currentPrice: regularMarketPrice,
+      createdAt: new Date(),
+      todayChange: today_change,
+      purchasePrice: regularMarketPrice,
+      quantity: quantity,
+      total_value: Math.round(quantity * regularMarketPrice * 100) / 100,
+      total_gain_loss:
+        total_value_today -
+        Math.round(quantity * regularMarketPrice * 100) / 100,
+      docId: docId,
+      action: action,
+    });
     setOpen(false);
     alert("Your trade was successful");
   };
