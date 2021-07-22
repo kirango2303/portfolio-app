@@ -15,6 +15,10 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import { Button } from "@material-ui/core";
 import firebase from "firebase";
 import axios from "axios";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles2 = makeStyles((theme) => ({
   paper: {
@@ -58,6 +62,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useStyles3 = makeStyles({
+  root: {
+    minWidth: 100,
+    width: "100%",
+    height: "30%",
+    marginBottom: 10,
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  spacing: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+});
+
+const useStyles4 = makeStyles({
+  root: {
+    minWidth: 100,
+    width: "33%",
+    height: "40%",
+    marginTop: 20,
+    marginRight: 20,
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  spacing: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
+
 const TraderSymbol = (props) => {
   const { symbol } = useParams();
   const { location } = props;
@@ -77,7 +133,56 @@ const TraderSymbol = (props) => {
 
   const classes = useStyles();
   const classes2 = useStyles2();
+  const classes3 = useStyles3();
+  const classes4 = useStyles4();
+
   const URL = `https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=${symbol}`;
+
+  const DetailCard = ({ title, stats }) => {
+    return (
+      <Card className={classes3.root} variant="outlined">
+        <CardContent className={classes3.spacing}>
+          <Typography
+            className={classes3.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            {title}
+          </Typography>
+
+          {/* <Typography className={classes3.pos} color="textSecondary">
+          adjective
+        </Typography> */}
+          <Typography variant="body2" component="p">
+            {stats}
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  const DetailCardAccount = ({ title, value }) => {
+    return (
+      <Card className={classes4.root} variant="outlined">
+        <CardContent className={classes4.spacing}>
+          <Typography
+            className={classes4.title}
+            color="textPrimary"
+            gutterBottom
+          >
+            {title}
+          </Typography>
+
+          {/* <Typography className={classes3.pos} color="textSecondary">
+          adjective
+        </Typography> */}
+          <Typography variant="body2" component="p">
+            {value}
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  };
 
   const handleShowMax = () => {
     if (action) {
@@ -340,37 +445,27 @@ const TraderSymbol = (props) => {
             <h1>Key Statistics</h1>
             <div className="key-stats">
               <div className="stock-info">
-                <div className="info">
-                  <div>Open:</div>
-                  <div>{stockData.regularMarketOpen}</div>
-                </div>
-
-                <div className="info">
-                  <div>52 Week High:</div>
-                  <div>{stockData.fiftyTwoWeekHigh}</div>
-                </div>
-
-                <div className="info">
-                  <div>Market Cap:</div>
-                  <div>{stockData.marketCap}</div>
-                </div>
+                <DetailCard title="Open:" stats={stockData.regularMarketOpen} />
+                <DetailCard
+                  title="52 Week High:"
+                  stats={stockData.fiftyTwoWeekHigh}
+                />
+                <DetailCard title="Market Cap:" stats={stockData.marketCap} />
               </div>
 
               <div className="stock-info">
-                <div className="info">
-                  <div>Close:</div>
-                  <div>{stockData.regularMarketPreviousClose}</div>
-                </div>
-
-                <div className="info">
-                  <div>52 Week Low:</div>
-                  <div>{stockData.fiftyTwoWeekLow}</div>
-                </div>
-
-                <div className="info">
-                  <div>Volume:</div>
-                  <div>{stockData.regularMarketVolume}</div>
-                </div>
+                <DetailCard
+                  title="Close:"
+                  stats={stockData.regularMarketPreviousClose}
+                />
+                <DetailCard
+                  title="52 Week Low:"
+                  stats={stockData.fiftyTwoWeekLow}
+                />
+                <DetailCard
+                  title="Volume:"
+                  stats={stockData.regularMarketVolume}
+                />
               </div>
             </div>
             <h1>Your account:</h1>
@@ -384,27 +479,27 @@ const TraderSymbol = (props) => {
                 alignItems: "flex-start",
               }}
             >
-              <div className="account-val">
-                <div className="account-name">ACCOUNT VALUE</div>
-                <div className="account-number">
-                  {currentUserInfo &&
-                    Math.round(currentUserInfo.total_value * 100) / 100}
-                </div>
-              </div>
-              <div className="account-val">
-                <div className="account-name">BUYING POWER</div>
-                <div className="account-number">
-                  {currentUserInfo &&
-                    Math.round(currentUserInfo.buying_power * 100) / 100}
-                </div>
-              </div>
-              <div className="account-val">
-                <div className="account-name">CASH</div>
-                <div className="account-number">
-                  {currentUserInfo &&
-                    Math.round(currentUserInfo.cash * 100) / 100}
-                </div>
-              </div>
+              <DetailCardAccount
+                title="ACCOUNT VALUE"
+                value={
+                  currentUserInfo &&
+                  Math.round(currentUserInfo.total_value * 100) / 100
+                }
+              />
+              <DetailCardAccount
+                title="BUYING POWER"
+                value={
+                  currentUserInfo &&
+                  Math.round(currentUserInfo.buying_power * 100) / 100
+                }
+              />
+              <DetailCardAccount
+                title="CASH"
+                value={
+                  currentUserInfo &&
+                  Math.round(currentUserInfo.cash * 100) / 100
+                }
+              />
             </div>
           </div>
 
@@ -421,9 +516,6 @@ const TraderSymbol = (props) => {
                 onChange={handleChange}
                 label="Action"
               >
-                {/* <MenuItem value="">
-                  <em>None</em>
-                </MenuItem> */}
                 <MenuItem value={"buy"}>Buy</MenuItem>
                 <MenuItem value={"sell"}>Sell</MenuItem>
               </Select>

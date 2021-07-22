@@ -6,7 +6,7 @@ body {
 #tradingview_17f8f div {
   height: 600px !important;
 }
-.wrap {
+.wrap-analysis {
   display: flex;
   flex-direction: column;
 
