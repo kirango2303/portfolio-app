@@ -281,80 +281,88 @@ const TraderSymbol = (props) => {
   };
 
   const handleBuyStock = async () => {
-    if (symbol in currentUserInfo.stocks) {
+    if (quantity >= 1) {
+      if (symbol in currentUserInfo.stocks) {
+        await db
+          .collection("users")
+          .doc(docId)
+          .update({
+            [`stocks.${symbol}.cur_value`]:
+              currentUserInfo.stocks[symbol].cur_value +
+              regularMarketPrice * quantity,
+            [`stocks.${symbol}.quantity`]:
+              currentUserInfo.stocks[symbol].quantity * 1 + quantity * 1,
+            [`stocks.${symbol}.average_price`]:
+              Math.round(
+                ((currentUserInfo.stocks[symbol].cur_value +
+                  regularMarketPrice * quantity) /
+                  (currentUserInfo.stocks[symbol].quantity * 1 +
+                    quantity * 1)) *
+                  100
+              ) / 100,
+          });
+      } else {
+        const newStocks = { ...currentUserInfo.stocks };
+        newStocks[symbol] = {
+          cur_value: regularMarketPrice * quantity,
+          quantity: quantity * 1,
+          average_price: regularMarketPrice,
+        };
+        await db.collection("users").doc(docId).update({
+          stocks: newStocks,
+        });
+      }
+
       await db
         .collection("users")
         .doc(docId)
         .update({
-          [`stocks.${symbol}.cur_value`]:
-            currentUserInfo.stocks[symbol].cur_value +
-            regularMarketPrice * quantity,
-          [`stocks.${symbol}.quantity`]:
-            currentUserInfo.stocks[symbol].quantity * 1 + quantity * 1,
-          [`stocks.${symbol}.average_price`]:
-            Math.round(
-              ((currentUserInfo.stocks[symbol].cur_value +
-                regularMarketPrice * quantity) /
-                (currentUserInfo.stocks[symbol].quantity * 1 + quantity * 1)) *
-                100
-            ) / 100,
+          num_stocks: currentUserInfo.num_stocks * 1 + quantity * 1,
+          long_stock:
+            currentUserInfo.long_stock + regularMarketPrice * quantity,
+          cash: currentUserInfo.cash - regularMarketPrice * quantity - 19.95,
         });
+      let sum = 0;
+      for (const [key, value] of Object.entries(currentUserInfo.stocks)) {
+        sum += value.cur_value;
+      }
+      await db
+        .collection("users")
+        .doc(docId)
+        .update({
+          buying_power:
+            currentUserInfo.cash -
+            regularMarketPrice * quantity +
+            currentUserInfo.long_stock / 2,
+          total_value:
+            currentUserInfo.cash - regularMarketPrice * quantity + sum,
+        });
+      let today_change =
+        Math.round(
+          (data.iexRealtimePrice / stockData.regularMarketPrice) * 100
+        ) / 100;
+      let total_value_today =
+        (Math.round(quantity * regularMarketPrice * 100) / 100) * today_change;
+      await db.collection("trades").add({
+        symbol: symbol,
+        description: stockData.shortName,
+        currentPrice: regularMarketPrice,
+        createdAt: new Date(),
+        todayChange: today_change,
+        purchasePrice: regularMarketPrice,
+        quantity: quantity,
+        total_value: Math.round(quantity * regularMarketPrice * 100) / 100,
+        total_gain_loss:
+          total_value_today -
+          Math.round(quantity * regularMarketPrice * 100) / 100,
+        docId: docId,
+        action: action,
+      });
+      setOpen(false);
+      alert("Your trade was successful");
     } else {
-      const newStocks = { ...currentUserInfo.stocks };
-      newStocks[symbol] = {
-        cur_value: regularMarketPrice * quantity,
-        quantity: quantity * 1,
-        average_price: regularMarketPrice,
-      };
-      await db.collection("users").doc(docId).update({
-        stocks: newStocks,
-      });
+      alert("You have not entered any quantity");
     }
-
-    await db
-      .collection("users")
-      .doc(docId)
-      .update({
-        num_stocks: currentUserInfo.num_stocks * 1 + quantity * 1,
-        long_stock: currentUserInfo.long_stock + regularMarketPrice * quantity,
-        cash: currentUserInfo.cash - regularMarketPrice * quantity - 19.95,
-      });
-    let sum = 0;
-    for (const [key, value] of Object.entries(currentUserInfo.stocks)) {
-      sum += value.cur_value;
-    }
-    await db
-      .collection("users")
-      .doc(docId)
-      .update({
-        buying_power:
-          currentUserInfo.cash -
-          regularMarketPrice * quantity +
-          currentUserInfo.long_stock / 2,
-        total_value: currentUserInfo.cash - regularMarketPrice * quantity + sum,
-      });
-    let today_change =
-      Math.round((data.iexRealtimePrice / stockData.regularMarketPrice) * 100) /
-      100;
-    let total_value_today =
-      (Math.round(quantity * regularMarketPrice * 100) / 100) * today_change;
-    await db.collection("trades").add({
-      symbol: symbol,
-      description: stockData.shortName,
-      currentPrice: regularMarketPrice,
-      createdAt: new Date(),
-      todayChange: today_change,
-      purchasePrice: regularMarketPrice,
-      quantity: quantity,
-      total_value: Math.round(quantity * regularMarketPrice * 100) / 100,
-      total_gain_loss:
-        total_value_today -
-        Math.round(quantity * regularMarketPrice * 100) / 100,
-      docId: docId,
-      action: action,
-    });
-    setOpen(false);
-    alert("Your trade was successful");
   };
 
   const handleSellStock = async () => {
