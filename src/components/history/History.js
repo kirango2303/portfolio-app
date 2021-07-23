@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import Topbar from "../../elements/topbar/Topbar";
 import { db } from "../../services/firebase";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 import "./History.css";
+
 const History = () => {
   const { currentUser } = useAuth();
   const [invalidate, setInvalidate] = useState(true);
@@ -42,175 +51,84 @@ const History = () => {
     };
     getRealTimeHistory();
   }, [docId]);
-  console.log(tradeData);
+
+  const StyledTableCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
+
+  const StyledTableRow = withStyles((theme) => ({
+    root: {
+      "&:nth-of-type(odd)": {
+        backgroundColor: theme.palette.action.hover,
+      },
+    },
+  }))(TableRow);
+
+  const useStyles = makeStyles({
+    table: {
+      minWidth: 200,
+      minHeight: "20%",
+    },
+  });
+  const classes = useStyles();
   return (
     <div>
       <Topbar />
       <div className="trade-history">
+        <h1 style={{ marginTop: 20 }}>Trade History</h1>
         <div className="trade-container">
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Symbol
-          </div>
-          <div
-            style={{
-              width: "25%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Description
-          </div>
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Current Price
-          </div>
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Purchase Price
-          </div>
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Quantity
-          </div>
-          <div
-            style={{
-              width: "15%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Total Value
-          </div>
-          <div
-            style={{
-              width: "15%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-          >
-            Action
-          </div>
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Symbol</StyledTableCell>
+                  <StyledTableCell align="right">Description</StyledTableCell>
+                  <StyledTableCell align="right">Current Price</StyledTableCell>
+                  <StyledTableCell align="right">
+                    Purchase Price
+                  </StyledTableCell>
+                  <StyledTableCell align="right">Quantity</StyledTableCell>
+                  <StyledTableCell align="right">Total Value</StyledTableCell>
+                  <StyledTableCell align="right">Action</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {tradeData &&
+                  tradeData.map((data) => (
+                    <StyledTableRow key={data.symbol}>
+                      <StyledTableCell component="th" scope="row">
+                        {data.symbol}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {data.description}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {data.currentPrice}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {data.purchasePrice}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {data.quantity}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {data.total_value}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {data.action}
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
-        {tradeData &&
-          tradeData.map((data) => {
-            return (
-              <div className="trade-container">
-                <div
-                  style={{
-                    width: "10%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.symbol}
-                </div>
-                <div
-                  style={{
-                    width: "25%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.description}
-                </div>
-                <div
-                  style={{
-                    width: "10%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.currentPrice}
-                </div>
-                <div
-                  style={{
-                    width: "10%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.purchasePrice}
-                </div>
-                <div
-                  style={{
-                    width: "10%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.quantity}
-                </div>
-                <div
-                  style={{
-                    width: "15%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.total_value}
-                </div>
-
-                <div
-                  style={{
-                    width: "15%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  {data.action}
-                </div>
-              </div>
-            );
-          })}
       </div>
     </div>
   );

@@ -20,6 +20,8 @@
   justify-content: center;
   width: 100%;
   height: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .button-modal-container {
   display: flex;
