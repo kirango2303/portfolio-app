@@ -57,7 +57,7 @@ const Signup = () => {
     setLoading(false);
   }
   return (
-    <>
+    <div className="wrap">
       <div className="content">
         <div className="content__container">
           <p className="content__container__text">Hello</p>
@@ -115,7 +115,7 @@ const Signup = () => {
         </div>
       </div>
      
-    </>
+    </div>
   );
 };
 

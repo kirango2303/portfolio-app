@@ -6,13 +6,7 @@ body {
 #tradingview_17f8f div {
   height: 600px !important;
 }
-.wrap {
-  display: flex;
-  flex-direction: column;
 
-  height: 100%;
-  width: 100%;
-}
 .top {
   margin-bottom: 10%;
 }

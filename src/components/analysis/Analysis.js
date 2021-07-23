@@ -5,7 +5,7 @@ import Topbar from '../../elements/topbar/Topbar';
  
 const Analysis = () => (
     
-    <div className="wrap">
+    <div className="wrap-analysis">
        <div className="top"><Topbar /></div>
         <div className="under"><TradingViewWidget
             symbol="NASDAQ:AAPL"

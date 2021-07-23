@@ -3,6 +3,9 @@ import { Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from "react-router-dom";
 import './Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faKey} from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 const Login = () => {
   const emailRef = useRef()
@@ -52,10 +55,42 @@ const Login = () => {
 
   return (
     <div className="wrap">
-      {/* <div className="bgImg">
-        <img
-          className="bg"
-          src={require('./background.png')} />
+      {/* <div className="row">
+        <div className="col-lg-3 col-md-2" />
+        <div className="col-lg-6 col-md-8 login-box">
+          <div className="col-lg-12 login-key">
+          <div className="icon"><FontAwesomeIcon style ={{fontSize: 35}} icon={faKey} /></div>
+          </div>
+          <div className="col-lg-12 login-title">
+            ADMIN PANEL
+          </div>
+          <div className="col-lg-12 login-form">
+            <div className="col-lg-12 login-form">
+              <Form className="form" onSubmit={handleSubmit}>
+                <Form.Group className="form-group">
+                  <Form.Label className="form-control-label" >EMAIL ADDRESS</Form.Label>
+                  <Form.Control type="email" className="form-control" ref={emailRef} required/>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label className="form-control-label">PASSWORD</Form.Label>
+                  <Form.Control className="form-control-label" type="password"  ref={passwordRef} required/>
+                </Form.Group>
+                <div className="col-lg-12 loginbttm">
+                <div >
+                    {error && <div className="col-lg-6 login-btm login-text">{error}</div>}
+                  </div>
+                  <div className="col-lg-6 login-btm login-button">
+                <Button className="btn btn-outline-primary" disabled={loading} type="submit">
+                  LOG IN
+                </Button>
+                </div>
+                </div>
+              </Form>
+            </div>
+          </div>
+          <div className="col-lg-3 col-md-2" />
+        </div>
       </div> */}
       <div className="content">
         <div className="content__container">
@@ -97,7 +132,7 @@ const Login = () => {
         <div className="linktosignup">
           New to this website? <Link to="/signup">SIGN UP.</Link>
         </div>
-      </div>
+      </div> 
 
     </div>
   );
