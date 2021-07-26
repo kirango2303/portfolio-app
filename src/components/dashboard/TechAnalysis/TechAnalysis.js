@@ -15,7 +15,8 @@ const TechAnalysis = (props) => {
             "isTransparent": false,
             "showIntervalTabs": true,
             "locale": "en",
-            "colorTheme": "dark"
+            "colorTheme": "light",
+            "height": 550
           })
         divRef.current.appendChild(script);
     }, [])

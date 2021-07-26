@@ -15,33 +15,33 @@ const Topbar = () => {
     <>
       <Nav>
         {/* <NavLink to='/'>
-          <img src={require('../../images/logo.svg')} alt='logo' />
+          <img src="https://quatamiha.files.wordpress.com/2021/07/screen-shot-2021-07-26-at-15.08.22.pngs" alt='' />
         </NavLink> */}
         <Bars />
         <NavMenu>
           <div>
-            <NavLink to="/analysis" activeStyle>
-              Analysis
+            <NavLink to="/home" activeStyle>
+              Dashboard
             </NavLink>
           </div>
           <div>
-            <NavLink to="/filter" activeStyle>
-              Filter
+            <NavLink to="/screener" activeStyle>
+              Stocks Screener
             </NavLink>
           </div>
           <div>
-            <NavLink to="/watchlist" activeStyle>
-              Watch List
+            <NavLink to="/recommend" activeStyle>
+              Recommendations Generator
             </NavLink>
           </div>
           <div>
             <NavLink to="/trader" activeStyle>
-              Trader
+              Trading Simulator 
             </NavLink>
           </div>
           <div>
             <NavLink to="/history" activeStyle>
-              History
+              Transactions Tracker
             </NavLink>
           </div>
           {/* <div>
@@ -55,7 +55,7 @@ const Topbar = () => {
         <NavBtn>
           {currentUser ? (
             <div onClick={logout}>
-              <NavBtnLink to="/login">Sign Out</NavBtnLink> :
+              <NavBtnLink to="/login">Sign Out</NavBtnLink> 
             </div>
           ) : (
             <NavBtnLink to="/login">Sign In</NavBtnLink>

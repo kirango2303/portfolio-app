@@ -47,7 +47,7 @@ const Signup = () => {
       };
       await localStorage.setItem("user", JSON.stringify(loggedInUser));
       // console.log("log in successfully")
-      history.push("/analysis");
+      history.push("/home");
     } catch {
       setError(
         "Failed to create an account. Password must be at least 6 characters or username already existed"
@@ -70,9 +70,9 @@ const Signup = () => {
           </ul>
         </div>
       </div>
-      <div className="title">
+      {/* <div className="title">
         <h2>Sign up</h2>
-      </div>
+      </div> */}
       <div className="login">
         {error && <div className="error">{error}</div>}
 
@@ -106,7 +106,7 @@ const Signup = () => {
             ></Form.Control>
           </Form.Group>
 
-          <Button disabled={loading} className="button" type="submit">
+          <Button disabled={loading} className="button-login" type="submit">
             Sign Up
           </Button>
         </Form>

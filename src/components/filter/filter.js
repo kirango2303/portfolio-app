@@ -113,10 +113,13 @@ const Filter = () => {
 
   return (
     <div className="outer-container">
+   
       <Topbar />
+      
+      
       <div className="button-container">
         <button className="button" onClick={() => setOpen(true)}>
-          Filter
+          OPEN STOCKS SCREENER
         </button>
       </div>
       <div className="container">

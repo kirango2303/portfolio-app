@@ -112,8 +112,8 @@
   width: 45%;
   height: 60px;
   background-color: white;
-  border: 1px solid #2c40d0;
-  color: #2c40d0;
+  border: 1px solid #3aafa9;
+  color: #3aafa9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,7 +122,7 @@
 .small-btn-2 {
   width: 45%;
   height: 60px;
-  background-color: #2c40d0;
+  background-color: #3aafa9;
   color: white;
   display: flex;
   align-items: center;

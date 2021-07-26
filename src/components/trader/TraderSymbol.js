@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     margin: theme.spacing(1),
     width: "40%",
-    color: "#2c40d0",
+    color: "#3aafa9",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),

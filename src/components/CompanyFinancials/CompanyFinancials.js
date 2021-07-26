@@ -10,16 +10,19 @@ const CompanyFinancials = (props) => {
         script.async = true;
         script.innerHTML =  JSON.stringify({
             "symbol": `${companyName}`,
-            "width": `${width}`,
-            "height": `${height}`,
-            "locale": "en",
             "colorTheme": "light",
             "isTransparent": false,
             "largeChartUrl": "",
             "displayMode": "regular",
+            "width": `${width}`,
+            "height": 900,
+            "locale": "en"
           })
+
+          
         divRef.current.appendChild(script);
     }, [])
+
 
     return (
         <div className="tradingview-widget-container" ref={divRef}>

@@ -106,12 +106,13 @@ const Trader = () => {
           width: "100%",
         }}
       >
-        <Topbar />
+        <div> <Topbar /></div>
+       
         <div
           className="container-stock"
           style={{ height: query ? "60%" : "15%" }}
         >
-          <h1 style={{ marginTop: 20 }}>Search your stock</h1>
+          <h1 style={{ marginTop: 20, color: "#3aafa9" }}>Search your stock</h1>
           <Paper component="form" className={classes.root}>
             <InputBase
               className={classes.input}
@@ -178,7 +179,7 @@ const Trader = () => {
           className="top-movers-container"
           style={{ height: query ? "30%" : "80%" }}
         >
-          <h1 style={{ marginBottom: 20 }}>Top Movers Today</h1>
+          <h1 style={{ marginBottom: 20 , color: "#3aafa9" }}>Top Movers Today</h1>
           <div className="top-movers">
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="customized table">

@@ -5,15 +5,18 @@ import { Link, useHistory } from "react-router-dom";
 import CompanyCard from "../CompanyCard/CompanyCard";
 import { Button, Form } from "react-bootstrap";
 import CompanyFinancials from "../CompanyFinancials/CompanyFinancials";
-import { useCallbackRef } from "use-callback-ref";
+// import { useCallbackRef } from "use-callback-ref";
 import SmallCompanyCard from "../dashboard/SmallCompanyCard/SmallCompanyCard";
+import Topbar from "../../elements/topbar/Topbar";
+import TechAnalysis from "../dashboard/TechAnalysis/TechAnalysis";
+
 
 function Recommend() {
   const [query, setQuery] = useState("");
   const [similarStocks, setSimilarStocks] = useState([]);
   const [searchedStocks, setSearchedStocks] = useState("");
   const [searching, setSearching] = useState(false);
-  const stocksRef = useCallbackRef(null, (ref) => ref && ref.focus());
+  // const stocksRef = useCallbackRef(null, (ref) => ref && ref.focus());
   const [count, setCount] = useState(0);
 
   const searchSimilarStocks = async () => {
@@ -47,15 +50,22 @@ function Recommend() {
   };
 
   return (
-    <div className="body">
-      <div className="two">
-        <h1>
+    <div className="wrap-recommend">
+      <div className="top-nav">
+      <Topbar />
+      </div>
+      
+      <div className="header-recommend">
+        <h1 style={{ marginBottom: 20, marginTop: 20, color: "#3aafa9" }}>
           Get Similar Stocks
-          <span>
-            Enter a Stocks Symbol to Generate Recommendations. Reset before
-            Searching Again.
-          </span>
+
         </h1>
+      </div>
+      <div className="header-recommend">
+        <h2 style={{ marginBottom: 20, color: "#17252a" }}>
+          Enter a Stocks Symbol to Generate Recommendations. Reset before
+          Searching Again.
+        </h2>
       </div>
       <div className="bar">
         <input
@@ -76,36 +86,50 @@ function Recommend() {
       </div>
       <div>
         {count !== 5 &&
-          "Enter Search. Reset before Searching again. If you see no result, you may have entered invalid stocks symbol"}
+          <div className="recommend-warning">
+             <div className="warning">
+           
+           <h3>If you see no result, you may have entered an invalid stocks symbol</h3>
+ 
+         </div>
+            <div className="wrapper">
+              <div className="pie spinner"></div>
+              <div className="pie filler"></div>
+              <div className="mask"></div>
+            </div>
+           
+          </div>
+        }
       </div>
+
 
       <div className="company-container">
         <div>
-          <div>
+          <h1 style={{color:"#2b7a78"}}>
             {searchedStocks &&
               similarStocks &&
               count === 5 &&
               "We found 5 alternatives"}
-          </div>
+          </h1>
           {searchedStocks &&
             similarStocks.map((stock) => (
               <CompanyCard companyName={stock.symbol} width={800} />
             ))}
         </div>
         <div>
-          <div>
+          <h1 style={{color:"#2b7a78"}}>
             {similarStocks &&
               searchedStocks &&
               count == 5 &&
               "You searched for:"}
-          </div>
+          </h1>
           <div>
             {similarStocks && searchedStocks && count == 5 && (
               <SmallCompanyCard companyName={searchedStocks} width={500} />
             )}
           </div>
           {similarStocks && searchedStocks && count == 5 && (
-            <CompanyFinancials companyName={searchedStocks} width={500} />
+            <TechAnalysis companyName={searchedStocks} width={500} />
           )}
         </div>
       </div>

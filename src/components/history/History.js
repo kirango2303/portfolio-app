@@ -81,7 +81,7 @@ const History = () => {
     <div>
       <Topbar />
       <div className="trade-history">
-        <h1 style={{ marginTop: 20 }}>Trade History</h1>
+        <h1 style={{ marginTop: 20, color:"#3aafa9" }}>Trade History</h1>
         <div className="trade-container">
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">

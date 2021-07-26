@@ -3,7 +3,7 @@ import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  background: #000;
+  background: #2b7a78;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -15,21 +15,26 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled(Link)`
-  color: #fff;
+  color: #def2f1;
   display: flex;
   align-items: center;
   text-decoration: none;
+
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
   &.active {
-    color: #15cdfc;
+    color: #17252a;
+    border:3px; border-style:solid; border-color:#3aafa9; padding: 1em;
+    background-color: #3aafa9
+    
+
   }
 `;
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #fff;
+  color: #2b7a78;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -58,7 +63,6 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 24px;
   /* Third Nav */
   /* justify-content: flex-end;
   width: 100vw; */
@@ -69,9 +73,9 @@ export const NavBtn = styled.nav`
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
-  background: #256ce1;
+  background: #3aafa9;
   padding: 10px 22px;
-  color: #fff;
+  color: #feffff;
   outline: none;
   border: none;
   cursor: pointer;
@@ -81,7 +85,7 @@ export const NavBtnLink = styled(Link)`
   margin-left: 24px;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background: #def2f1;
+    color: #2b7a78;
   }
 `;

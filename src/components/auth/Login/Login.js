@@ -39,7 +39,7 @@ const Login = () => {
           }
         );
 
-        history.push("/analysis");
+        history.push("/home");
       } catch {
         setError(
           "Failed to login. Please check your password or username and try again"
@@ -57,43 +57,6 @@ const Login = () => {
 
   return (
     <div className="wrap">
-      {/* <div className="row">
-        <div className="col-lg-3 col-md-2" />
-        <div className="col-lg-6 col-md-8 login-box">
-          <div className="col-lg-12 login-key">
-          <div className="icon"><FontAwesomeIcon style ={{fontSize: 35}} icon={faKey} /></div>
-          </div>
-          <div className="col-lg-12 login-title">
-            ADMIN PANEL
-          </div>
-          <div className="col-lg-12 login-form">
-            <div className="col-lg-12 login-form">
-              <Form className="form" onSubmit={handleSubmit}>
-                <Form.Group className="form-group">
-                  <Form.Label className="form-control-label" >EMAIL ADDRESS</Form.Label>
-                  <Form.Control type="email" className="form-control" ref={emailRef} required/>
-                </Form.Group>
-
-                <Form.Group className="form-group">
-                  <Form.Label className="form-control-label">PASSWORD</Form.Label>
-                  <Form.Control className="form-control-label" type="password"  ref={passwordRef} required/>
-                </Form.Group>
-                <div className="col-lg-12 loginbttm">
-                <div >
-                    {error && <div className="col-lg-6 login-btm login-text">{error}</div>}
-                  </div>
-                  <div className="col-lg-6 login-btm login-button">
-                <Button className="btn btn-outline-primary" disabled={loading} type="submit">
-                  LOG IN
-                </Button>
-                </div>
-                </div>
-              </Form>
-            </div>
-          </div>
-          <div className="col-lg-3 col-md-2" />
-        </div>
-      </div> */}
       <div className="content">
         <div className="content__container">
           <p className="content__container__text">Hello</p>
@@ -105,9 +68,9 @@ const Login = () => {
           </ul>
         </div>
       </div>
-      <div className="title">
+      {/* <div className="title">
         <h2>Sign in</h2>
-      </div>
+      </div> */}
 
       <div className="login">
         {error && <div className="error">{error}</div>}
@@ -133,8 +96,8 @@ const Login = () => {
             ></Form.Control>
           </Form.Group>
 
-          <Button className="button" disabled={loading} type="submit">
-            Let me in.
+          <Button className="button-login" disabled={loading} type="submit">
+            LOG IN
           </Button>
         </Form>
         <div className="linktosignup">

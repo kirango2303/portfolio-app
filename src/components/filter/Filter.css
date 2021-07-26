@@ -37,12 +37,12 @@
 .button {
   width: 120px;
   height: 80%;
-  background-color: #0b4387;
+  background-color: #3aafa9;
 }
 .button:hover {
   background-color: white;
-  color: #0b4387;
-  border: 1px solid #0b4387;
+  color: #3aafa9;
+  border: 1px solid #3aafa9;
 }
 
 .outer-container {

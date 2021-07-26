@@ -3,13 +3,14 @@ import React from "react";
 import Signup from "./components/auth/Signup/Signup";
 import Login from "./components/auth/Login/Login";
 import { Route, Switch } from "react-router-dom";
-import Analysis from "./components/analysis/Analysis";
+import Dashboard from "./components/analysis/Dashboard";
 // import Watchlist from "./components/watchlist/Watchlist";
 import Filter from "./components/Filter/Filter";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import Trader from "./components/trader/Trader";
 import TraderSymbol from "./components/trader/TraderSymbol";
 import History from "./components/history/History";
+import Recommend from "./components/recommend/Recommend";
 
 const App = () => {
   return (
@@ -18,9 +19,9 @@ const App = () => {
         <Switch>
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/analysis" component={Analysis} />
-          <PrivateRoute path="/filter" component={Filter} />
-          {/* <PrivateRoute path="/watchlist" component={Watchlist} /> */}
+          <PrivateRoute path="/home" component={Dashboard} />
+          <PrivateRoute path="/screener" component={Filter} />
+          <PrivateRoute path="/recommend" component={Recommend} /> 
           <PrivateRoute exact path="/trader" component={Trader} />
           <PrivateRoute exact path="/history" component={History} />
           <PrivateRoute exact path="/trader/:symbol" component={TraderSymbol} />
