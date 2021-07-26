@@ -2,10 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import './Login.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faKey} from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import "./Login.css";
 
 const Login = () => {
   const emailRef = useRef();
@@ -39,7 +36,7 @@ const Login = () => {
           }
         );
 
-        history.push("/home");
+        history.push("/");
       } catch {
         setError(
           "Failed to login. Please check your password or username and try again"
@@ -103,8 +100,7 @@ const Login = () => {
         <div className="linktosignup">
           New to this website? <Link to="/signup">SIGN UP.</Link>
         </div>
-      </div> 
-
+      </div>
     </div>
   );
 };

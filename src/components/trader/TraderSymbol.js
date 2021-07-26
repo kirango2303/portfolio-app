@@ -16,9 +16,45 @@ import { Button } from "@material-ui/core";
 import firebase from "firebase";
 import axios from "axios";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import InputBase from "@material-ui/core/InputBase";
+import { withStyles } from "@material-ui/core/styles";
+
+const BootstrapInput = withStyles((theme) => ({
+  root: {
+    "label + &": {
+      marginTop: theme.spacing(3),
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: "relative",
+    backgroundColor: "3AAFA9",
+    border: "1px solid #3AAFA9",
+    fontSize: 16,
+    padding: "10px 26px 10px 12px",
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+    "&:focus": {
+      borderRadius: 4,
+      borderColor: "3AAFA9",
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
+    },
+  },
+}))(InputBase);
 
 const useStyles2 = makeStyles((theme) => ({
   paper: {
@@ -35,6 +71,14 @@ const useStyles2 = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    backgroundColor: "white",
+    color: "#3AAFA9",
+    "&:hover": {
+      backgroundColor: "#3AAFA9",
+      color: "white",
+    },
   },
 }));
 
@@ -60,6 +104,9 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  select: {
+    color: "#3AAFA9",
+  },
 }));
 
 const useStyles3 = makeStyles({
@@ -76,6 +123,8 @@ const useStyles3 = makeStyles({
   },
   title: {
     fontSize: 14,
+    color: "#3AAFA9",
+    fontWeight: "bold",
   },
   pos: {
     marginBottom: 12,
@@ -101,7 +150,9 @@ const useStyles4 = makeStyles({
     transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14,
+    fontSize: 16,
+    color: "#3AAFA9",
+    fontWeight: "bold",
   },
   pos: {
     marginBottom: 12,
@@ -514,18 +565,22 @@ const TraderSymbol = (props) => {
           <div className="buy">
             <h1>Actions</h1>
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Action
-              </InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={action}
                 onChange={handleChange}
                 label="Action"
+                input={<BootstrapInput />}
+                placeholder="Action"
+                className={classes.select}
               >
-                <MenuItem value={"buy"}>Buy</MenuItem>
-                <MenuItem value={"sell"}>Sell</MenuItem>
+                <MenuItem className={classes.menuItem} value={"buy"}>
+                  Buy
+                </MenuItem>
+                <MenuItem className={classes.menuItem} value={"sell"}>
+                  Sell
+                </MenuItem>
               </Select>
             </FormControl>
             <div className="form-container">
@@ -549,7 +604,12 @@ const TraderSymbol = (props) => {
               </FormControl>
 
               <div className="max-quantity">
-                <Button color="primary" size="large" onClick={handleShowMax}>
+                <Button
+                  color="primary"
+                  className={classes2.button}
+                  size="large"
+                  onClick={handleShowMax}
+                >
                   Show Max
                 </Button>
               </div>

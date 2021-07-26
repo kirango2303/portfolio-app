@@ -6,8 +6,8 @@ export const Nav = styled.nav`
   background: #2b7a78;
   height: 60px;
   display: flex;
-  justify-content: space-between;
-  padding: 0.5rem calc((100vw - 1000px) / 2);
+  justify-content: space-around;
+  padding: 0.5rem calc((100vw - 1500px) / 2);
   z-index: 10;
   width: 100%;
   /* Third Nav */
@@ -25,17 +25,18 @@ export const NavLink = styled(Link)`
   cursor: pointer;
   &.active {
     color: #17252a;
-    border:3px; border-style:solid; border-color:#3aafa9; padding: 1em;
-    background-color: #3aafa9
-    
-
+    border: 3px;
+    border-style: solid;
+    border-color: #3aafa9;
+    padding: 1em;
+    background-color: #3aafa9;
   }
 `;
 
 export const Bars = styled(FaBars)`
   display: none;
   color: #2b7a78;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1380px) {
     display: block;
     position: absolute;
     top: 0;
@@ -49,13 +50,14 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-right: -24px;
   /* Second Nav */
   /* margin-right: 24px; */
   /* Third Nav */
   /* width: 100vw;
   white-space: nowrap; */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1400px) {
     display: none;
   }
 `;
@@ -66,7 +68,7 @@ export const NavBtn = styled.nav`
   /* Third Nav */
   /* justify-content: flex-end;
   width: 100vw; */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;

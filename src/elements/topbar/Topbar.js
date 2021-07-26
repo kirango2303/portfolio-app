@@ -19,8 +19,11 @@ const Topbar = () => {
         </NavLink> */}
         <Bars />
         <NavMenu>
+          {/* <div>
+            <NavLink exact to="/">NerdInvestor</NavLink>
+          </div> */}
           <div>
-            <NavLink to="/home" activeStyle>
+            <NavLink exact to="/" activeStyle>
               Dashboard
             </NavLink>
           </div>
@@ -36,7 +39,7 @@ const Topbar = () => {
           </div>
           <div>
             <NavLink to="/trader" activeStyle>
-              Trading Simulator 
+              Trading Simulator
             </NavLink>
           </div>
           <div>
@@ -55,7 +58,7 @@ const Topbar = () => {
         <NavBtn>
           {currentUser ? (
             <div onClick={logout}>
-              <NavBtnLink to="/login">Sign Out</NavBtnLink> 
+              <NavBtnLink to="/login">Sign Out</NavBtnLink>
             </div>
           ) : (
             <NavBtnLink to="/login">Sign In</NavBtnLink>
