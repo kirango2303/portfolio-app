@@ -5,7 +5,7 @@ import Login from "./components/auth/Login/Login";
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "./components/analysis/Dashboard";
 // import Watchlist from "./components/watchlist/Watchlist";
-import Filter from "./components/filter/filter";
+import Filter from "./components/filter/Filter";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import Trader from "./components/trader/Trader";
 import TraderSymbol from "./components/trader/TraderSymbol";

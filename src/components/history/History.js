@@ -96,6 +96,7 @@ const History = () => {
                   <StyledTableCell align="right">Quantity</StyledTableCell>
                   <StyledTableCell align="right">Total Value</StyledTableCell>
                   <StyledTableCell align="right">Action</StyledTableCell>
+                  {/* <StyledTableCell align="right">Date</StyledTableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -123,6 +124,9 @@ const History = () => {
                       <StyledTableCell align="right">
                         {data.action}
                       </StyledTableCell>
+                      {/* <StyledTableCell align="right">
+                        {`${data.createdAt}`}
+                      </StyledTableCell> */}
                     </StyledTableRow>
                   ))}
               </TableBody>

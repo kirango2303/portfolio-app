@@ -398,7 +398,7 @@ const TraderSymbol = (props) => {
         symbol: symbol,
         description: stockData.shortName,
         currentPrice: regularMarketPrice,
-        createdAt: new Date(),
+        createdAt: new Date().toISOString().slice(0, 10).replace(/-/g, ""),
         todayChange: today_change,
         purchasePrice: regularMarketPrice,
         quantity: quantity,

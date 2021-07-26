@@ -14,9 +14,6 @@ const Topbar = () => {
   return (
     <>
       <Nav>
-        {/* <NavLink to='/'>
-          <img src="https://quatamiha.files.wordpress.com/2021/07/screen-shot-2021-07-26-at-15.08.22.pngs" alt='' />
-        </NavLink> */}
         <Bars />
         <NavMenu>
           {/* <div>
