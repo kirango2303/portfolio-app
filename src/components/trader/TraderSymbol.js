@@ -150,7 +150,7 @@ const useStyles4 = makeStyles({
     transform: "scale(0.8)",
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     color: "#3AAFA9",
     fontWeight: "bold",
   },
@@ -270,6 +270,7 @@ const TraderSymbol = (props) => {
     const res = await axios.get(URL, {
       headers: {
         "x-rapidapi-key": "8b18afce59msh40240d866aa4c6bp1a5a7ejsnbdd82173f217",
+        // another key 6503a026bemshe50304d5cc78398p13d71bjsna571fbcb61fa
         "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
       },
     });

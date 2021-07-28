@@ -10,7 +10,6 @@ import SmallCompanyCard from "../dashboard/SmallCompanyCard/SmallCompanyCard";
 import Topbar from "../../elements/topbar/Topbar";
 import TechAnalysis from "../dashboard/TechAnalysis/TechAnalysis";
 
-
 function Recommend() {
   const [query, setQuery] = useState("");
   const [similarStocks, setSimilarStocks] = useState([]);
@@ -52,60 +51,70 @@ function Recommend() {
   return (
     <div className="wrap-recommend">
       <div className="top-nav">
-      <Topbar />
+        <Topbar />
       </div>
-      
-      <div className="header-recommend">
-        <h1 style={{ marginBottom: 20, marginTop: 20, color: "#3aafa9" }}>
-          Get Similar Stocks
-
-        </h1>
-      </div>
-      <div className="header-recommend">
-        <h2 style={{ marginBottom: 20, color: "#17252a" }}>
-          Enter a Stocks Symbol to Generate Recommendations. Reset before
-          Searching Again.
-        </h2>
-      </div>
-      <div className="bar">
-        <input
-          className="searchbar"
-          type="text"
-          placeholder="i.e. AAPL"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </div>
-      <div className="buttons">
-        <button className="button" onClick={handleSearch} disabled={searching}>
-          Find Similar Stocks
-        </button>
-        <button className="button" onClick={reset}>
-          Reset and Search Again
-        </button>
+      <div
+        style={{
+          width: "100%",
+          height: "40%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div className="header-recommend">
+          <h1 style={{ marginBottom: 20, marginTop: 20, color: "#3aafa9" }}>
+            Get Similar Stocks
+          </h1>
+        </div>
+        <div className="header-recommend">
+          <h2 style={{ marginBottom: 20, color: "#17252a" }}>
+            Enter a Stocks Symbol to Generate Recommendations. Reset before
+            Searching Again.
+          </h2>
+        </div>
+        <div className="bar">
+          <input
+            className="searchbar"
+            type="text"
+            placeholder="i.e. AAPL"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+        <div className="buttons">
+          <button
+            className="button"
+            onClick={handleSearch}
+            disabled={searching}
+          >
+            Find Similar Stocks
+          </button>
+          <button className="button" onClick={reset}>
+            Reset and Search Again
+          </button>
+        </div>
       </div>
       <div>
-        {count !== 5 &&
+        {count !== 5 && (
           <div className="recommend-warning">
-             <div className="warning">
-           
-           <h3>If you see no result, you may have entered an invalid stocks symbol</h3>
- 
-         </div>
+            <div className="warning">
+              <h3>
+                If you see no result, you may have entered an invalid stocks
+                symbol
+              </h3>
+            </div>
             <div className="wrapper">
               <div className="pie spinner"></div>
               <div className="pie filler"></div>
               <div className="mask"></div>
             </div>
-           
           </div>
-        }
+        )}
       </div>
-
 
       <div className="company-container">
         <div>
-          <h1 style={{color:"#2b7a78"}}>
+          <h1 style={{ color: "#2b7a78" }}>
             {searchedStocks &&
               similarStocks &&
               count === 5 &&
@@ -117,7 +126,7 @@ function Recommend() {
             ))}
         </div>
         <div>
-          <h1 style={{color:"#2b7a78"}}>
+          <h1 style={{ color: "#2b7a78" }}>
             {similarStocks &&
               searchedStocks &&
               count == 5 &&
